@@ -54,6 +54,8 @@ return [
     |
     */
 
+    'url_web' => env('URL_WEB', 'https://api.vertigotravelperu.com'), // default value if not set
+
     'url' => env('APP_URL', 'http://localhost'),
 
     'asset_url' => env('ASSET_URL'),
