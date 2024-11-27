@@ -40,10 +40,10 @@ class CertificadoEditar extends Component
 
     public function reducir($i)
     {
-        unset($this->url[$i]);
-        $this->url = array_values($this->url);
-        unset($this->urlabrir[$i]);
-        $this->urlabrir = array_values($this->urlabrir);
+        unset($this->urlabriranterior[$i]);
+        $this->urlabriranterior = array_values($this->urlabriranterior);
+        unset($this->urlanterior[$i]);
+        $this->urlanterior = array_values($this->urlanterior);
         $this->cont --;
     }
 
