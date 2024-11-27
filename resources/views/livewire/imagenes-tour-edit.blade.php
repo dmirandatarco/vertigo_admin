@@ -8,7 +8,7 @@
     @if($imagenesanteriores)
         @foreach($imagenesanteriores as $i => $image)
             <button class="badge btn-danger position-absolute mt-2 ms-2" wire:click.prevent="eliminarfotos({{$i}})">X</button>
-            <img src="{{$image->nombre}}"  class="imagen-principal">
+            <img src="{{$image[$i]}}"  class="imagen-principal">
         @endforeach
     @endif
     <input type="hidden" name="imagenes2" id="imagenes2" class="form-control" value='{{$imagenesanteriores}}'>
