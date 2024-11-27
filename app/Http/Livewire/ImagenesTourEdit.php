@@ -10,19 +10,17 @@ class ImagenesTourEdit extends Component
     use WithFileUploads;
         
     public $imagenes=[];
-    public $imagenesanteriores=[];
+    public $imagenesanteriores;
 
 
     public function mount($imagenesanteriores)
     {
-        foreach($imagenesanteriores as $i => $imagen){
-            $this->imagenesanteriores[$i]=$imagen->nombre;
-        }
+        $this->imagenesanteriores=$imagenesanteriores;
     }
 
     public function eliminarfotos($i){
         unset($this->imagenesanteriores[$i]);
-        $this->imagenesanteriores = array_values($this->imagenesanteriores);
+        $this->imagenesanteriores = $this->imagenesanteriores->values();
     }
 
     public function render()
