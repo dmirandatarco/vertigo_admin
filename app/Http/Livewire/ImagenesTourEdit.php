@@ -15,7 +15,9 @@ class ImagenesTourEdit extends Component
 
     public function mount($imagenesanteriores)
     {
-        $this->imagenesanteriores=$imagenesanteriores;
+        foreach($imagenesanteriores as $i => $imagen){
+            $this->imagenesanteriores[$i]=$imagen->nombre;
+        }
     }
 
     public function eliminarfotos($i){
