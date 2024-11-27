@@ -13,7 +13,7 @@ class CorreoController extends Controller
     public function contacto(Request $request)
     {
         try{
-            Mail::to($request->email)->send(new ContactMailable($request));
+            Mail::to('reservas@vertigotravelperu.com')->send(new ContactMailable($request));
             return response()->json([
                 'success' => true,
                 'message' => 'Correo enviado correctamente.'
@@ -21,8 +21,7 @@ class CorreoController extends Controller
         }catch(\Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Hubo un error al enviar el correo. Por favor, inténtelo de nuevo más tarde.',
-                 'error' => $e->getMessage() // Aquí se incluye el mensaje de error
+                'message' => 'Hubo un error al enviar el correo. Por favor, inténtelo de nuevo más tarde.'.$e->getMessage(),
             ], 500);
         }
         
@@ -31,7 +30,7 @@ class CorreoController extends Controller
     public function dorado(Request $request)
     {
         try{
-            Mail::to($request->email)->send(new DoradoMailable($request));
+            Mail::to('reservas@vertigotravelperu.com')->send(new DoradoMailable($request));
             return response()->json([
                 'success' => true,
                 'message' => 'Correo enviado correctamente.'
@@ -39,7 +38,7 @@ class CorreoController extends Controller
         }catch(\Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Hubo un error al enviar el correo. Por favor, inténtelo de nuevo más tarde.'
+                'message' => 'Hubo un error al enviar el correo. Por favor, inténtelo de nuevo más tarde.'.$e->getMessage(),
             ], 500);
         }
         
