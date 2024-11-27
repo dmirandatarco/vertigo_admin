@@ -20,6 +20,7 @@ class ImagenesTourEdit extends Component
 
     public function eliminarfotos($i){
         unset($this->imagenesanteriores[$i]);
+        $this->imagenesanteriores = array_values($this->imagenesanteriores);
     }
 
     public function render()
