@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Mail\ContactMailable;
 use App\Mail\DoradoMailable;
+use App\Mail\LibroMailable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -31,6 +32,23 @@ class CorreoController extends Controller
     {
         try{
             Mail::to('reservas@vertigotravelperu.com')->send(new DoradoMailable($request));
+            return response()->json([
+                'success' => true,
+                'message' => 'Correo enviado correctamente.'
+            ], 200);
+        }catch(\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Hubo un error al enviar el correo. Por favor, inténtelo de nuevo más tarde.'.$e->getMessage(),
+            ], 500);
+        }
+        
+    }
+
+    public function libro(Request $request)
+    {
+        try{
+            Mail::to('reservas@vertigotravelperu.com')->send(new LibroMailable($request));
             return response()->json([
                 'success' => true,
                 'message' => 'Correo enviado correctamente.'

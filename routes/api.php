@@ -28,8 +28,8 @@ Route::post('/confirmar-pago', 'App\Http\Controllers\Api\NiubizController@confir
 Route::post('/blogs', 'App\Http\Controllers\Api\TourController@allblog')->middleware('payment.callback');
 Route::post('/blogbyId', 'App\Http\Controllers\Api\TourController@blogbyId')->middleware('payment.callback');
 Route::post('/correo-contacto', 'App\Http\Controllers\Api\CorreoController@contacto')->middleware('payment.callback');
+Route::post('/libro-reclamaciones', 'App\Http\Controllers\Api\CorreoController@libro')->middleware('payment.callback');
 Route::post('/correo-dorado', 'App\Http\Controllers\Api\CorreoController@dorado')->middleware('payment.callback');
-
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
