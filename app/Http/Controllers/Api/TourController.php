@@ -67,7 +67,7 @@ class TourController extends Controller
 
     public function blogbyId(Request $request)
     {
-        $blog = Blog::where('slug',$request->slug)->with('user')->first();
+        $blog = Blog::where('slug',$request->slug)->with('user','images')->first();
 
         return response()->json($blog);
     }
