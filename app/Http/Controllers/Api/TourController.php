@@ -32,6 +32,8 @@ class TourController extends Controller
 
         if($request->nosotros){
             $blogs = $blogs->where('nosotros',1);
+        }else{
+            $blogs = $blogs->where('nosotros',0);
         }
         $blogs = $blogs->get();
         return response()->json($blogs);
