@@ -173,6 +173,7 @@ class BlogController extends Controller
             $request['slug']=Str::slug($request->titulo,'-');
             $request['user_id']=$blog->user_id;
             $request['fecha']= $blog->fecha;
+            $request['nosotros']= $blog->nosotros;
             $blogtraducido=Blog::create($request->all());
             $imagenesanteriores=json_decode($request->imagenes2);
             $i=1;
