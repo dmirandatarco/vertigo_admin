@@ -82,7 +82,12 @@
             </li>
             @can('blog.index')
             <li class="nav-item">
-              <a href="{{ url('mantenimientoweb/blog') }}" class="nav-link {{ active_class(['mantenimientoweb/blog']) }}">Blog</a>
+              <a href="{{ url('mantenimientoweb/lista-blogs') }}" class="nav-link {{ active_class(['mantenimientoweb/lista-blogs']) }}">Blog</a>
+            </li>
+            @endcan
+            @can('blog.index')
+            <li class="nav-item">
+              <a href="{{ url('mantenimientoweb/blog') }}" class="nav-link {{ active_class(['mantenimientoweb/blog']) }}">Detalle Nosotros</a>
             </li>
             @endcan
           </ul>

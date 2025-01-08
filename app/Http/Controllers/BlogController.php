@@ -24,15 +24,28 @@ class BlogController extends Controller
 
     public function index()
     {
-        $blogs=Blog::all();
+        $blogs=Blog::where('nosotros',0)->get();
         $i=0;
         return view('pages.blog.index',compact('blogs','i'));
+    }
+
+    public function blogs()
+    {
+        $blogs=Blog::where('nosotros',1)->get();
+        $i=0;
+        return view('pages.blog.blogs',compact('blogs','i'));
     }
 
     public function create()
     {
         $idiomas=Language::where('estado',1)->get();
         return view('pages.blog.create',compact('idiomas'));
+    }
+
+    public function createblogs()
+    {
+        $idiomas=Language::where('estado',1)->get();
+        return view('pages.blog.createblogs',compact('idiomas'));
     }
 
     public function store(BlogRequest $request)

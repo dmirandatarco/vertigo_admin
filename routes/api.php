@@ -26,7 +26,7 @@ Route::post('/niubiz', 'App\Http\Controllers\Api\NiubizController@SessionToken')
 Route::post('/niubiz-pago', 'App\Http\Controllers\Api\NiubizController@pagoNiubiz')->name('niubiz.pago');
 Route::post('/confirmar-pago', 'App\Http\Controllers\Api\NiubizController@confirmarPago')->middleware('payment.callback');
 Route::post('/blogs', 'App\Http\Controllers\Api\TourController@allblog')->middleware('payment.callback');
-Route::post('/blogbyId', 'App\Http\Controllers\Api\TourController@blogbyId')->middleware('payment.callback');
+Route::post('/blog-slug', 'App\Http\Controllers\Api\TourController@blogbyId')->middleware('payment.callback');
 Route::post('/correo-contacto', 'App\Http\Controllers\Api\CorreoController@contacto')->middleware('payment.callback');
 Route::post('/libro-reclamaciones', 'App\Http\Controllers\Api\CorreoController@libro')->middleware('payment.callback');
 Route::post('/correo-dorado', 'App\Http\Controllers\Api\CorreoController@dorado')->middleware('payment.callback');

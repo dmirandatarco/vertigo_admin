@@ -39,7 +39,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('mantenimientoweb/tour', App\Http\Controllers\TourController::class)->names('tour');
     Route::resource('mantenimientoweb/comentario', App\Http\Controllers\ComentarioController::class)->except('show,edit,create,store,update')->names('comentario');
     Route::resource('mantenimientoweb/paquete', App\Http\Controllers\PaqueteWebController::class)->names('paqueteweb');
-    Route::resource('mantenimientoweb/blog', App\Http\Controllers\BlogController::class)->names('blog');
+    Route::get('mantenimientoweb/lista-blogs', [App\Http\Controllers\BlogController::class,'blogs'])->name('blog.blogs');
+    Route::get('mantenimientoweb/create-blogs', [App\Http\Controllers\BlogController::class,'createblogs'])->name('blog.createblogs');
+    Route::resource('mantenimientoweb/blog', App\Http\Controllers\BlogController::class)->except('show')->names('blog');
     Route::get('mantenimiento/traducirblog/{lang}/{blog}', [App\Http\Controllers\BlogController::class,'traducir'])->name('blog.traducir');
     Route::post('mantenimiento/blogtraducido/{blog}', [App\Http\Controllers\BlogController::class,'blogtraducido'])->name('blog.blogtraducido');
     Route::resource('mantenimientoweb/cabecera', App\Http\Controllers\CabeceraController::class)->except('show,edit,create')->names('cabecera');

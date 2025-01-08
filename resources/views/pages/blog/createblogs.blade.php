@@ -17,7 +17,7 @@
       <div class="card-body">
         <div class="row">
           <input type="hidden" name="language_id" value="1">
-          <input type="hidden" name="nosotros" value="0">
+          <input type="hidden" name="nosotros" value="1">
           <div class="mb-3 col-md-12" >
             <label class="form-label" for="titulo">Titulo:</label>
             <input type="text" name="titulo"  id="titulo" class="form-control" value="{{old('titulo')}}" placeholder="Titulo">

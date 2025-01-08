@@ -8,12 +8,12 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    <h4 class="mb-3">Listado de Detalle Nosotros</h4>
+                    <h4 class="mb-3">Listado de Blogs</h4>
                     <div class="mb-5">
                         @can('blog.create')
-                        <a href="{{ route('blog.create')}}">
+                        <a href="{{ route('blog.createblogs')}}">
                             <button type="button"  data-bs-title="Crear" class="btn btn-primary mb-2 mb-md-0 ">
-                                <i data-feather="plus-circle"></i><b> &nbsp; Crear Detalle Nosotros</b>
+                                <i data-feather="plus-circle"></i><b> &nbsp; Crear Blog</b>
                             </button>
                         </a>
                         @endcan
