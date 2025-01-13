@@ -30,7 +30,7 @@ class TourController extends Controller
     {
         $blogs = Blog::with('user','images')->where('language_id',$request->language_id);
 
-        if($request->nosotros){
+        if(!$request->nosotros){
             $blogs = $blogs->where('nosotros',1);
         }else{
             $blogs = $blogs->where('nosotros',0);
