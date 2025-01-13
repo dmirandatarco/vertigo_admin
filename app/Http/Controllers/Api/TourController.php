@@ -30,10 +30,10 @@ class TourController extends Controller
     {
         $blogs = Blog::with('user','images')->where('language_id',$request->language_id);
 
-        if(!$request->nosotros){
-            $blogs = $blogs->where('nosotros',1);
+        if($request->nosotros){
+            $blogs = $blogs->where('nosotros',$request->nosotros);
         }else{
-            $blogs = $blogs->where('nosotros',0);
+            $blogs = $blogs->where('nosotros',1);
         }
         $blogs = $blogs->get();
         return response()->json($blogs);
