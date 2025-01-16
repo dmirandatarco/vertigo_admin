@@ -29,12 +29,7 @@ class TourController extends Controller
     public function allblog(Request $request)
     {
         $blogs = Blog::with('user','images')->where('language_id',$request->language_id);
-
-        if($request->nosotros){
-            $blogs = $blogs->where('nosotros',$request->nosotros);
-        }else{
-            $blogs = $blogs->where('nosotros',1);
-        }
+        $blogs = $blogs->where('nosotros',$request->nosotros);
         $blogs = $blogs->get();
         return response()->json($blogs);
     }
