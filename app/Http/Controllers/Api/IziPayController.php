@@ -12,7 +12,7 @@ class IziPayController extends Controller
     {
         $llavepublica =  env('IZIPAY_USERNAME').':'. env('IZIPAY_API_PASSWORD');
 
-        $authorizacion = base64_encode('50167321:testpassword_sK98LBjpDxPxCXqK4NICaU7ZbzW9v7phEGoetoXvSr1Bp');
+        $authorizacion = base64_encode($llavepublica);
         $token = Http::withHeaders([
             'Authorization' => 'Basic ' . $authorizacion,
             'Accept' => 'application/json'
