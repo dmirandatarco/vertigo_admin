@@ -22,7 +22,7 @@ class TourController extends Controller
 {
     public function alltours(Request $request)
     {
-        $tours = Tour::with('categoria','itinerarios','images','ubicaciones')->where('language_id',$request->language_id)->get();
+        $tours = Tour::with('categoria','itinerarios','images','ubicaciones')->where('language_id',$request->language_id)->where('estado',1)->get();
         return response()->json($tours);
     }
 
@@ -77,7 +77,7 @@ class TourController extends Controller
         // $tour = Tour::where('id',$traduccion->id)->with('categoria','itinerarios','images','ubicaciones')->first();
         // $tour->relacionados = Tour::where('categoria_id',$tour->categoria_id)->where('id','!=',$tour->id)->where('estado',1)
         // ->inRandomOrder()->take(3)->get();
-        $tour = Tour::where('slug',$request->slug)->with('categoria','itinerarios','images','ubicaciones')->first();
+        $tour = Tour::where('slug',$request->slug)->with('categoria','itinerarios','images','ubicaciones')->where('estado',1)->first();
         $tour->relacionados = Tour::where('categoria_id',$tour->categoria_id)->where('id','!=',$tour->id)->where('estado',1)
         ->inRandomOrder()->take(3)->get();
         return response()->json($tour);

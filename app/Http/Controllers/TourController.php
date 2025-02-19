@@ -150,9 +150,7 @@ class TourController extends Controller
                 $imagenprincipal=$idioma->abreviatura.'-'.Str::slug($request->nombre,'-').'.webp';
                 Storage::move('livewire-tmp/'.$request->imagenprincipal, 'img/tours/'.$imagenprincipal);
                 $ruta='img/tours/'.$imagenprincipal;
-                Image::make('storage/'.$ruta)->orientate()->fit(1600, 1200, function ($constraint) {
-                    $constraint->upsize();
-                })->encode('webp')
+                Image::make('storage/'.$ruta)->orientate()->encode('webp')
                 ->save('storage/'.$ruta);
                 $request['imagenprincipal']=$imagenprincipal;
             }
@@ -182,7 +180,8 @@ class TourController extends Controller
                 $nombreimagenfinal = str_replace(env('URL_WEB') . '/storage/img/tours/', '',  $imagen2->nombre);
                 list($nombre2,$extension24 ) = explode(".", $nombreimagenfinal);
                 $imagen121=$idioma->abreviatura.'-'.Str::slug($request->nombre,'-').'-'.$i.'.webp';
-                Storage::copy('img/tours/'.$nombreimagenfinal, 'img/tours/'.$imagen121);
+                $contenido = Storage::disk('public')->get('img/tours/'.$nombreimagenfinal);
+                Storage::disk('public')->put('img/tours/'.$imagen121, $contenido);
 
                 $tour->images()->create(['nombre'=>$imagen121]);
                 $i++;
@@ -192,9 +191,7 @@ class TourController extends Controller
                 $imagen12 = $idioma->abreviatura.'-'.Str::slug($request->nombre,'-').'-'.$i.'.webp';
                 Storage::move('livewire-tmp/'.$imagen, 'img/tours/'.$imagen12);
                 $ruta = 'img/tours/'.$imagen12;
-                Image::make('storage/'.$ruta)->orientate()->fit(1600, 1200, function ($constraint) {
-                    $constraint->upsize();
-                })->encode('webp')
+                Image::make('storage/'.$ruta)->orientate()->encode('webp')
                 ->save('storage/'.$ruta);
                 $tour->images()->create(['nombre' => $imagen12]);
                 $i++;
@@ -291,16 +288,15 @@ class TourController extends Controller
                 $imagenprincipal=$idioma->abreviatura.'-'.Str::slug($request->nombre,'-').'.webp';
                 Storage::move('livewire-tmp/'.$request->imagenprincipal, 'img/tours/'.$imagenprincipal);
                 $ruta='img/tours/'.$imagenprincipal;
-                Image::make('storage/'.$ruta)->orientate()->fit(1600, 1200, function ($constraint) {
-                    $constraint->upsize();
-                })->encode('webp')
+                Image::make('storage/'.$ruta)->orientate()->encode('webp')
                 ->save('storage/'.$ruta);
                 $request['imagenprincipal']=$imagenprincipal;
             }else{
                 $nombreimagenfinal = str_replace(env('URL_WEB') . '/storage/img/tours/', '',  $tour->imagenprincipal);
                 list($nombre,$extension ) = explode(".", $nombreimagenfinal);
                 $imagenprincipal=$idioma->abreviatura.'-'.Str::slug($request->nombre,'-').'.webp';
-                Storage::copy('img/tours/'.$nombreimagenfinal, 'img/tours/'.$imagenprincipal);
+                $contenido = Storage::disk('public')->get('img/tours/'.$nombreimagenfinal);
+                Storage::disk('public')->put('img/tours/'.$imagenprincipal, $contenido);
                 $request['imagenprincipal']=$imagenprincipal;
             }
 
@@ -315,10 +311,11 @@ class TourController extends Controller
                 $tourtraducido->save();
             }else{
                 if($tour->voucher){
-                    $nombreimagenfinal = str_replace(env('URL_WEB') . '/storage/img/tours/', '',  $tour->voucher);
+                    $nombreimagenfinal = str_replace(env('URL_WEB') . '/storage/img/cotizacion/', '',  $tour->voucher);
                     list($nombre,$extension ) = explode(".", $nombreimagenfinal );
                     $voucher=$idioma->abreviatura.'-'.Str::slug($request->nombre,'-').'.'.$extension;
-                    Storage::copy('img/cotizacion/'.$nombreimagenfinal , 'img/cotizacion/'.$voucher);
+                    $contenido = Storage::disk('public')->get('img/cotizacion/'.$nombreimagenfinal);
+                    Storage::disk('public')->put('img/cotizacion/'.$voucher, $contenido);
                     $tourtraducido->voucher=$voucher;
                     $tourtraducido->save();
                 }
@@ -329,7 +326,8 @@ class TourController extends Controller
                 $nombreimagenfinal = str_replace(env('URL_WEB') . '/storage/img/tours/', '',  $imagen2->nombre);
                 list($nombre2,$extension24 ) = explode(".", $nombreimagenfinal);
                 $imagen121=$idioma->abreviatura.'-'.Str::slug($request->nombre,'-').'-'.$i.'.webp';
-                Storage::copy('img/tours/'.$nombreimagenfinal, 'img/tours/'.$imagen121);
+                $contenido = Storage::disk('public')->get('img/tours/'.$nombreimagenfinal);
+                Storage::disk('public')->put('img/tours/'.$imagen121, $contenido);
                 $tourtraducido->images()->create(['nombre'=>$imagen121]);
                 $i++;
             }
