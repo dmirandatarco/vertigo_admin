@@ -67,7 +67,7 @@ class IziPayController extends Controller
         }
         
         // Validación de firma en IPN
-        if (!$this->checkHash($request, env("IZIPAY_PASSWORD"))) {
+        if (!$this->checkHash($request, env("IZIPAY_API_PASSWORD"))) {
             throw new \Exception("Invalid signature");
         }
 
