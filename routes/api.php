@@ -31,7 +31,7 @@ Route::post('/correo-contacto', 'App\Http\Controllers\Api\CorreoController@conta
 Route::post('/libro-reclamaciones', 'App\Http\Controllers\Api\CorreoController@libro')->middleware('payment.callback');
 Route::post('/correo-dorado', 'App\Http\Controllers\Api\CorreoController@dorado')->middleware('payment.callback');
 Route::post('/izipay', 'App\Http\Controllers\Api\IziPayController@formToken')->middleware('payment.callback');
-Route::post('/validate', 'App\Http\Controllers\Api\IziPayController@validateData')->middleware('payment.callback');
+Route::post('/validate', 'App\Http\Controllers\Api\IziPayController@validateData');
 Route::get('/ipn', 'App\Http\Controllers\Api\IziPayController@ipn');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
