@@ -13,6 +13,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         'reserva/agradecimiento',
-        'niubiz-pago'
+        'niubiz-pago',
+        'api/ipn'
     ];
 }
