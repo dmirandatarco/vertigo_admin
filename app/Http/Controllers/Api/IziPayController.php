@@ -65,7 +65,7 @@ class IziPayController extends Controller
             'Accept' => 'application/json'
         ])
             ->post('https://api.micuentaweb.pe/api-payment/V4/Charge/CreatePayment', [
-                'amount' => $pago20,
+                'amount' => $pago20*100,
                 'currency' => 'USD',
                 'orderId' => $reserva->id,
                 'customer' => [
