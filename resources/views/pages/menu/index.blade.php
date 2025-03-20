@@ -46,7 +46,6 @@
                                     <td>{{++$i}}</td>
                                     <td>{{$menu->nombre}}</td>
                                     <td>{{$menu->tipo ? 'Header':'Footer'}}</td>
-                                    <td>{{$menu->estado ? 'Header':'Footer'}}</td>
                                     <td><img style="width:25px;" src="{{$menu->language?->icono}}" alt="{{$menu->language?->icono}}"></td>
                                     @foreach($languages2 as $language)
                                         <td>
@@ -77,6 +76,7 @@
                                             @endif
                                         </td>
                                     @endforeach
+                                    <td>{{$menu->estado ? 'Activo':'Inactivo'}}</td>
                                     <td>
                                         @can('menu.edit')
                                         <a href="{{route('menu.edit',$menu->id)}}">
@@ -86,9 +86,9 @@
                                         </a>
                                         @endcan
                                         @can('menu.destroy')
-                                        <button type="button"  data-bs-toggle="tooltip" data-bs-title="Eliminar" class="btn btn-danger btn-icon" data-bs-toggle="modal" data-bs-target="#Eliminar" data-id="{{$menu->id}}">
-                                            <i data-feather="trash-2"></i>
-                                        </button>
+                                            <button type="button"  class="btn btn-danger btn-icon" data-bs-toggle="modal" data-bs-target="#Eliminar" data-id="{{$menu->id}}">
+                                                <i data-feather="trash-2"></i>
+                                            </button>
                                         @endcan
                                     </td>
                                 </tr>
@@ -110,7 +110,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{route('agencia.destroy','test')}}" method="POST" autocomplete="off">
+                <form action="{{route('menu.destroy','test')}}" method="POST" autocomplete="off">
                     {{method_field('delete')}}
                     {{csrf_field()}}
                     <p>Estas seguro de cambiar el estado?</p>

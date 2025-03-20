@@ -51,15 +51,15 @@ class MenuController extends Controller
 
     public function destroy(Request $request)
     {
-        $hotel= Proveedor::findOrFail($request->id_proveedor_2);
-        if($hotel->estado=="1"){
-            $hotel->estado= '0';
-            $hotel->save();
-            return redirect()->back()->with('success','Estado de Hotel Cambiado Correctamente.');
+        $menu= Menu::findOrFail($request->id_proveedor_2);
+        if($menu->estado=="1"){
+            $menu->estado= '0';
+            $menu->save();
+            return redirect()->back()->with('success','Estado de Menu Cambiado Correctamente.');
         }else{
-            $hotel->estado= '1';
-            $hotel->save();
-            return redirect()->back()->with('success','Estado de Hotel Cambiado Correctamente.');
+            $menu->estado= '1';
+            $menu->save();
+            return redirect()->back()->with('success','Estado de Menu Cambiado Correctamente.');
         }
     }
 }

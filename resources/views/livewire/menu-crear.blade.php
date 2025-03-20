@@ -7,7 +7,7 @@
         <span class="error-message" style="color:red">{{$message}}</span>
         @enderror
     </div>
-    <div class="mb-3 col-md-6">
+    <div class="mb-3 col-md-3">
         <label class="form-label" for="tipo">UBICACION:</label>
         <div wire:ignore>
             <select class="form-control"  id="tipo" wire:model.defer="tipo">
@@ -16,6 +16,19 @@
             </select>
         </div>       
         @error('tipo')
+            <span class="error-message" style="color:red">{{$message}}</span>
+        @enderror
+    </div>
+
+    <div class="mb-3 col-md-3">
+        <label class="form-label" for="ubicacion">UBICACION:</label>
+        <div wire:ignore>
+            <select class="form-control"  id="ubicacion" wire:model.defer="ubicacion">
+                <option value="0">CATEGORIAS</option>
+                <option value="1">UBICACIONES</option>
+            </select>
+        </div>       
+        @error('ubicacion')
             <span class="error-message" style="color:red">{{$message}}</span>
         @enderror
     </div>
@@ -31,7 +44,7 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th ><label class="form-label"> CATEGORIA</label></th>
+                            <th ><label class="form-label"> {{$ubicacion == 1 ? 'UBICACION':'CATEGORIA'}}</label></th>
                             <th ><label class="form-label"> NOMBRE</label></th>
                             <th ><label class="form-label"> URL</label></th>
                             <th ></th>
@@ -42,15 +55,27 @@
                             <tr id="{{$i}}">
                                 <td>{{$i+1}}</td>
                                 <td>
-                                    <select class="form-control" name="tour_id" id="categoria_id{{$i}}" wire:model.defer="categoria_id.{{$i}}">
-                                        <option value="">SELECCIONE</option>
-                                        @foreach($categorias as $categoria)
-                                            <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
-                                        @endforeach
-                                    </select>
-                                    @error('categoria_id.'.$i)
-                                    <span class="error-message" style="color:red">Campo Obligatorio</span>
-                                    @enderror
+                                    @if($ubicacion == 1)
+                                        <select class="form-control" name="ubicacion_id" id="ubicacion_id{{$i}}" wire:model.defer="ubicacion_id.{{$i}}">
+                                            <option value="">SELECCIONE</option>
+                                            @foreach($ubicaciones as $ubicacione)
+                                                <option value="{{$ubicacione->id}}">{{$ubicacione->nombre}}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('ubicacion_id.'.$i)
+                                            <span class="error-message" style="color:red">Campo Obligatorio</span>
+                                        @enderror
+                                    @else
+                                        <select class="form-control" name="tour_id" id="categoria_id{{$i}}" wire:model.defer="categoria_id.{{$i}}">
+                                            <option value="">SELECCIONE</option>
+                                            @foreach($categorias as $categoria)
+                                                <option value="{{$categoria->id}}">{{$categoria->nombre}}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('categoria_id.'.$i)
+                                            <span class="error-message" style="color:red">Campo Obligatorio</span>
+                                        @enderror
+                                    @endif
                                 </td>
                                 <td>
                                     <input type="text" class="form-control" placeholder="nombredetalle " name="nombredetalle{{$i}}" id="nombredetalle{{$i}}" wire:model.defer="nombredetalle.{{$i}}">

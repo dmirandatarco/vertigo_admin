@@ -20,4 +20,9 @@ class MenuDetalle extends Model
     {
         return $this->belongsTo(Categoria::class);
     }
+
+    public function ubicacion()
+    {
+        return $this->belongsTo(Ubicacion::class);
+    }
 }
