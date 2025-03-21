@@ -36,6 +36,7 @@ class MenuCrear extends Component
             $this->cont = count($menu->detalles);
             $this->nombre = $menu->nombre;
             $this->tipo =  $menu->tipo;
+            $this->ubicacion =  $menu->ubicacion;
             for($i = 0; $i < $this->cont; $i++){
                 $this->categoria_id[$i] = $menu->detalles[$i]->categoria_id;
                 $this->ubicacion_id[$i] = $menu->detalles[$i]->ubicacion_id;
