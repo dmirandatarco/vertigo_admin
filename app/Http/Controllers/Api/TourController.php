@@ -92,7 +92,7 @@ class TourController extends Controller
         $tripadvisor = Tripadvisor::all();
         $idiomas = Language::all();
         $paises = Pais::all();
-        $menu = Menu::with('detalles','detalles.categoria','detalles.ubicacion','detalles.categoria.tours')->where('language_id',$request->language_id)->get();
+        $menu = Menu::with('detalles','detalles.categoria','detalles.ubicacion','detalles.ubicacion.tours','detalles.categoria.tours')->where('estado',1)->where('language_id',$request->language_id)->get();
         $data = [
             "nosotros" => $nosotros,
             "cabecera" => $cabecera,
