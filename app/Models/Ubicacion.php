@@ -36,13 +36,14 @@ class Ubicacion extends Model
         return $this->morphOne(Image::class, 'imageable');
     }
 
-    public function tours() {
-        return $this->belongsToMany('App\Models\Tour')->where('estado',1);
+    public function tours()
+    {
+        return $this->hasMany('App\Models\Tour')->activos()->orderBy('orden', 'asc');
     }
 
     public function toursweb()
     {
-        return $this->belongsToMany('App\Models\Tour')->where('web',1)->where('estado',1);
+        return $this->hasMany('App\Models\Tour')->activos()->web();
     }
 
     public function language()

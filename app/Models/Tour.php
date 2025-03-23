@@ -42,6 +42,16 @@ class Tour extends Model
     //     return 'slug';
     // }
 
+    public function scopeActivos($query)
+    {
+        return $query->where('estado', 1);
+    }
+
+    public function scopeWeb($query)
+    {
+        return $query->where('web', 1);
+    }
+
     protected function nombre(): Attribute
     {
         return new Attribute(
