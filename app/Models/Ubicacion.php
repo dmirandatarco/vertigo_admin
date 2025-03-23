@@ -42,7 +42,7 @@ class Ubicacion extends Model
 
     public function toursweb()
     {
-        return $this->belongsToMany('App\Models\Tour')->where('web',1);
+        return $this->belongsToMany('App\Models\Tour')->where('web',1)->where('estado',1);
     }
 
     public function language()
