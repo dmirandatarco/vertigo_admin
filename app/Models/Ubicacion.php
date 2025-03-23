@@ -37,7 +37,7 @@ class Ubicacion extends Model
     }
 
     public function tours() {
-        return $this->belongsToMany('App\Models\Tour');
+        return $this->belongsToMany('App\Models\Tour')->where('estado',1);
     }
 
     public function toursweb()

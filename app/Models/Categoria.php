@@ -38,7 +38,7 @@ class Categoria extends Model
 
     public function tours()
     {
-        return $this->hasMany('App\Models\Tour')->orderBy('orden','asc');
+        return $this->hasMany('App\Models\Tour')->orderBy('orden','asc')->where('estado',1);
     }
 
     public function toursweb()
