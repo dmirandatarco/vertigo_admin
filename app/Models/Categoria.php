@@ -38,12 +38,12 @@ class Categoria extends Model
 
     public function tours()
     {
-        return $this->hasMany('App\Models\Tour')->activos()->orderBy('orden', 'asc');
+        return $this->belongsToMany('App\Models\Tour')->activos()->orderBy('orden', 'asc');
     }
 
     public function toursweb()
     {
-        return $this->hasMany('App\Models\Tour')->activos()->web();
+        return $this->belongsToMany('App\Models\Tour')->activos()->web();
     }
 
     public function language()
