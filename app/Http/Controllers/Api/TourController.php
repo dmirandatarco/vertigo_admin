@@ -36,7 +36,7 @@ class TourController extends Controller
 
     public function allcategorias(Request $request)
     {
-        $categorias = Categoria::with('image','tours')->withCount('tours','tours.ubicaciones','tours.categoria')->where('language_id',$request->language_id)->get();
+        $categorias = Categoria::with('image','tours','tours.ubicaciones','tours.categoria')->withCount('tours')->where('language_id',$request->language_id)->get();
 
         return response()->json($categorias);
     }
@@ -50,7 +50,7 @@ class TourController extends Controller
 
     public function allubicaciones(Request $request)
     {
-        $ubicaciones = Ubicacion::with('image','tours')->withCount('tours','tours.ubicaciones','tours.categoria')->where('language_id',$request->language_id)->get();
+        $ubicaciones = Ubicacion::with('image','tours','tours.ubicaciones','tours.categoria')->withCount('tours')->where('language_id',$request->language_id)->get();
 
         return response()->json($ubicaciones);
     }
