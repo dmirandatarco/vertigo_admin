@@ -78,7 +78,7 @@ class TourController extends Controller
         // $tour->relacionados = Tour::where('categoria_id',$tour->categoria_id)->where('id','!=',$tour->id)->where('estado',1)
         // ->inRandomOrder()->take(3)->get();
         $tour = Tour::where('slug',$request->slug)->with('categoria','itinerarios','images','ubicaciones')->where('estado',1)->first();
-        $tour->relacionados = Tour::where('categoria_id',$tour->categoria_id)->where('id','!=',$tour->id)->where('estado',1)
+        $tour->relacionados = Tour::where('categoria_id',$tour->categoria_id)->where('id','!=',$tour->id)->where('estado',1)->with('categoria','ubicaciones')
         ->inRandomOrder()->take(3)->get();
         return response()->json($tour);
     }
