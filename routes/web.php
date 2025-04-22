@@ -112,6 +112,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('paquete/pdf/{paquete}', [App\Http\Controllers\PaqueteController::class, 'pdf'])->name('paquete.pdf');
     Route::get('paquete/vender/{paquete}', [App\Http\Controllers\PaqueteController::class, 'vender'])->name('paquete.vender');
 
+    Route::get('agencia-registro', [App\Http\Controllers\AgenciaRegistroController::class, 'index'])->name('agenciaRegistro.index');
+    Route::get('agencia-registro/aceptar/{id}', [App\Http\Controllers\AgenciaRegistroController::class, 'aceptar'])->name('agenciaRegistro.aceptar');
+
     Route::group(['prefix' => 'error'], function () {
         Route::get('404', function () {
             return view('pages.error.404');

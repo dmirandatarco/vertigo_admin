@@ -90,11 +90,17 @@
               <a href="{{ url('mantenimientoweb/blog') }}" class="nav-link {{ active_class(['mantenimientoweb/blog']) }}">Detalle Nosotros</a>
             </li>
             @endcan
+           
           </ul>
         </div>
       </li>
       @endif
-     
+      <li class="nav-item {{ active_class(['agencia-registro']) }}">
+        <a href="{{ url('agencia-registro') }}" class="nav-link">
+          <i class="link-icon" data-feather="activity"></i>
+          <span class="link-title">Agencias</span>
+        </a>
+      </li>
     </ul>
   </div>
 </nav>

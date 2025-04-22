@@ -33,6 +33,7 @@ Route::post('/correo-dorado', 'App\Http\Controllers\Api\CorreoController@dorado'
 Route::post('/izipay', 'App\Http\Controllers\Api\IziPayController@formToken')->middleware('payment.callback');
 Route::post('/validate', 'App\Http\Controllers\Api\IziPayController@validateData');
 Route::post('/ipn', 'App\Http\Controllers\Api\IziPayController@ipn');
+Route::post('/agencias', 'App\Http\Controllers\Api\AgenciasController@agencias');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
