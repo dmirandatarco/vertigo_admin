@@ -68,22 +68,16 @@
                         <textarea class="form-control" name="descripcion" id="descripcion" rows="10" wire:model.defer="descripcion"></textarea>
                     </div>
                 </div>
-                <div class="d-md-block col-md-4 col-xl-4">
+                <div class="d-md-block col-md-6 col-xl-6">
                     <div class="card-body"wire:ignore>
-                        <label class="form-label" for="descripcion1">Descripción 1:</label>
+                        <label class="form-label" for="descripcion1">Misión:</label>
                         <textarea class="form-control" name="descripcion1" id="descripcion1" rows="10" wire:model.defer="descripcion1"></textarea>
                     </div>
                 </div>
-                <div class="d-md-block col-md-4 col-xl-4">
+                <div class="d-md-block col-md-6 col-xl-6">
                     <div class="card-body"wire:ignore>
-                        <label class="form-label" for="descripcion2">Descripción 2:</label>
+                        <label class="form-label" for="descripcion2">Visión:</label>
                         <textarea class="form-control" name="descripcion2" id="descripcion2" rows="10" wire:model.defer="descripcion2"></textarea>
-                    </div>
-                </div>
-                <div class="d-md-block col-md-4 col-xl-4">
-                    <div class="card-body"wire:ignore>
-                        <label class="form-label" for="descripcion3">Descripción 3:</label>
-                        <textarea class="form-control" name="descripcion3" id="descripcion3" rows="10" wire:model.defer="descripcion3"></textarea>
                     </div>
                 </div>
             </div>
