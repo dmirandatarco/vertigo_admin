@@ -181,7 +181,9 @@ class TourController extends Controller
                 list($nombre2,$extension24 ) = explode(".", $nombreimagenfinal);
                 $imagen121=$idioma->abreviatura.'-'.Str::slug($request->nombre,'-').'-'.$i.'.webp';
                 $contenido = Storage::disk('public')->get('img/tours/'.$nombreimagenfinal);
-                Storage::disk('public')->put('img/tours/'.$imagen121, $contenido);
+                if($contenido){
+                    Storage::disk('public')->put('img/tours/'.$imagen121, $contenido);
+                }
 
                 $tour->images()->create(['nombre'=>$imagen121]);
                 $i++;
